@@ -11,8 +11,8 @@
 
 @interface SignedOutVC ()
 
-- (IBAction)onSignInButton:(id)sender;
 - (void)onError;
+- (IBAction)onSignInButton:(id)sender;
 
 @end
 
@@ -58,5 +58,6 @@
 - (void)onError {
     [[[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Couldn't log in with Twitter, please try again!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
+
 
 @end
