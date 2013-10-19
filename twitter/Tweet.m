@@ -14,6 +14,14 @@
     return [self.data valueOrNilForKeyPath:@"text"];
 }
 
+- (NSString *)screeName {
+    return [self.userData valueOrNilForKeyPath:@"screen_name"];
+}
+
+- (NSDictionary *)userData {
+    return [self.data valueOrNilForKeyPath:@"user"];
+}
+
 + (NSMutableArray *)tweetsWithArray:(NSArray *)array {
     NSMutableArray *tweets = [[NSMutableArray alloc] initWithCapacity:array.count];
     for (NSDictionary *params in array) {
