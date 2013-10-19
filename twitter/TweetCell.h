@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TweetCell : UITableViewCell
-
+@property (nonatomic, weak) IBOutlet UILabel *tweetLabel;
 @end

@@ -8,6 +8,9 @@
 
 #import "TweetCell.h"
 
+@interface TweetCell ()
+@end
+
 @implementation TweetCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
