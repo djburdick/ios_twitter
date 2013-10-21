@@ -77,6 +77,7 @@
     cell.screenNameLabel.text = tweet.screeName;
     cell.nameLabel.text = tweet.name;
     cell.timeAgoLabel.text = tweet.timeAgo;
+    [cell.profileImage setImage:tweet.profileImage];
 
     return cell;
 }

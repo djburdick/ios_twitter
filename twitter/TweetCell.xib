@@ -40,10 +40,15 @@
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZFd-hS-We1">
+                        <rect key="frame" x="15" y="13" width="50" height="50"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="nameLabel" destination="rbQ-Iq-5No" id="Ed8-Pp-zOx"/>
+                <outlet property="profileImage" destination="ZFd-hS-We1" id="PoV-BQ-7d6"/>
                 <outlet property="screenNameLabel" destination="F3G-dN-Y6V" id="SEd-Sn-2as"/>
                 <outlet property="timeAgoLabel" destination="EOY-CU-LxE" id="nGa-k3-nsm"/>
                 <outlet property="timeLabel" destination="EOY-CU-LxE" id="aaW-hr-x5j"/>
