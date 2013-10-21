@@ -43,9 +43,9 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="nameLabel" destination="rbQ-Iq-5No" id="Ed8-Pp-zOx"/>
+                <outlet property="screenNameLabel" destination="F3G-dN-Y6V" id="SEd-Sn-2as"/>
                 <outlet property="timeLabel" destination="EOY-CU-LxE" id="aaW-hr-x5j"/>
                 <outlet property="tweetLabel" destination="cxj-VA-hJ8" id="4xI-DH-c8G"/>
-                <outlet property="userNameLabel" destination="F3G-dN-Y6V" id="VA9-lY-tEv"/>
             </connections>
         </tableViewCell>
     </objects>

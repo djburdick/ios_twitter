@@ -15,7 +15,7 @@
 }
 
 - (NSString *)screeName {
-    return [self.userData valueOrNilForKeyPath:@"screen_name"];
+    return [@"@" stringByAppendingString:[self.userData valueOrNilForKeyPath:@"screen_name"]];
 }
 
 - (NSDictionary *)userData {

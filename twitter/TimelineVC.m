@@ -74,7 +74,7 @@
     Tweet *tweet = self.tweets[indexPath.row];
 
     cell.tweetLabel.text = tweet.text;
-    cell.nameLabel.text = tweet.screeName;
+    cell.screenNameLabel.text = tweet.screeName;
 
     return cell;
 }
