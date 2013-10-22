@@ -156,16 +156,24 @@
 - (void)composeTweet {
     ComposeVC *cvc = [[ComposeVC alloc] initWithNibName:@"Compose" bundle:[NSBundle mainBundle]];
     [self.navigationController pushViewController:cvc animated:YES];
+
+    [[TwitterClient instance] currentUserProfileData:^(AFHTTPRequestOperation *operation, id response) {
+      //  NSLog(@"%@", response);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        // Do nothing
+    }];
+
 }
 
 - (void)reload {
     [[TwitterClient instance] homeTimelineWithCount:20 sinceId:0 maxId:0 success:^(AFHTTPRequestOperation *operation, id response) {
-        NSLog(@"%@", response);
+       // NSLog(@"%@", response);
         self.tweets = [Tweet tweetsWithArray:response];
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         // Do nothing
     }];
+
 }
 
 @end
