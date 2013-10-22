@@ -33,6 +33,8 @@
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(postTweet)];
 
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelTweet)];
+
     User *userData = [User currentUser];
     _screenName.text = [userData.data objectForKey:@"screen_name"];
     _name.text = [userData.data objectForKey:@"name"];
@@ -53,6 +55,11 @@
         // do nothing
     }];
 
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)cancelTweet
+{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
