@@ -8,6 +8,7 @@
 
 #import "TimelineVC.h"
 #import "TweetCell.h"
+#import "ComposeVC.h"
 
 @interface TimelineVC ()
 
@@ -39,6 +40,8 @@
     [self.tableView registerNib:cellNib forCellReuseIdentifier:@"TweetCell"];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(onSignOutButton)];
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Compose" style:UIBarButtonItemStylePlain target:self action:@selector(composeTweet)];
 
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -148,6 +151,11 @@
 
 - (void)onSignOutButton {
     [User setCurrentUser:nil];
+}
+
+- (void)composeTweet {
+    ComposeVC *cvc = [[ComposeVC alloc] initWithNibName:@"Compose" bundle:[NSBundle mainBundle]];
+    [self.navigationController pushViewController:cvc animated:YES];
 }
 
 - (void)reload {

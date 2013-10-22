@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		223CC2DB1811D96700A8EB29 /* connectButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 223CC2DA1811D96700A8EB29 /* connectButton.png */; };
 		223CC2DC1811F76E00A8EB29 /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42CC89C017B0F03E00B6D34B /* TweetCell.xib */; };
+		223CC2E11815F12A00A8EB29 /* ComposeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 223CC2E01815F12A00A8EB29 /* ComposeVC.m */; };
+		223CC3271815F31100A8EB29 /* Compose.xib in Resources */ = {isa = PBXBuildFile; fileRef = 223CC3261815F31100A8EB29 /* Compose.xib */; };
 		42CC892C17AF4C6A00B6D34B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42CC892B17AF4C6A00B6D34B /* Foundation.framework */; };
 		42CC892E17AF4C6A00B6D34B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42CC892D17AF4C6A00B6D34B /* CoreGraphics.framework */; };
 		42CC893017AF4C6A00B6D34B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42CC892F17AF4C6A00B6D34B /* UIKit.framework */; };
@@ -45,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		223CC2DA1811D96700A8EB29 /* connectButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = connectButton.png; path = ../../../TwitterClient/TwitterClient/Assets/connectButton.png; sourceTree = "<group>"; };
+		223CC2DF1815F12A00A8EB29 /* ComposeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeVC.h; sourceTree = "<group>"; };
+		223CC2E01815F12A00A8EB29 /* ComposeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeVC.m; sourceTree = "<group>"; };
+		223CC3261815F31100A8EB29 /* Compose.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Compose.xib; sourceTree = "<group>"; };
 		42CC892817AF4C6A00B6D34B /* twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CC892B17AF4C6A00B6D34B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		42CC892D17AF4C6A00B6D34B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -204,6 +209,9 @@
 				42CC89A717B0C31900B6D34B /* SignedOutVC.h */,
 				42CC89A817B0C31900B6D34B /* SignedOutVC.m */,
 				42CC89A917B0C31900B6D34B /* SignedOutVC.xib */,
+				223CC2DF1815F12A00A8EB29 /* ComposeVC.h */,
+				223CC2E01815F12A00A8EB29 /* ComposeVC.m */,
+				223CC3261815F31100A8EB29 /* Compose.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -334,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223CC3271815F31100A8EB29 /* Compose.xib in Resources */,
 				42CC89AB17B0C31900B6D34B /* SignedOutVC.xib in Resources */,
 				223CC2DC1811F76E00A8EB29 /* TweetCell.xib in Resources */,
 				42CC893617AF4C6A00B6D34B /* InfoPlist.strings in Resources */,
@@ -395,6 +404,7 @@
 				42CC89AE17B0C7A600B6D34B /* User.m in Sources */,
 				42CC89B117B0C7B800B6D34B /* Tweet.m in Sources */,
 				42CC89B417B0D63C00B6D34B /* RestObject.m in Sources */,
+				223CC2E11815F12A00A8EB29 /* ComposeVC.m in Sources */,
 				42CC895D17AF6FBB00B6D34B /* TimelineVC.m in Sources */,
 				42CC893C17AF4C6B00B6D34B /* AppDelegate.m in Sources */,
 				42CC893817AF4C6B00B6D34B /* main.m in Sources */,
