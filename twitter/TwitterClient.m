@@ -52,13 +52,6 @@ static NSString * const kAccessTokenKey = @"kAccessTokenKey";
     [self getPath:@"1.1/account/verify_credentials.json" parameters:nil success:success failure:failure];
 }
 
-- (void)currentUserProfileData:(void (^)(AFHTTPRequestOperation * operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
-
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"djburdick",@"screen_name", nil];
-
-    [self getPath:@"1.1/users/show.json" parameters:params success:success failure:failure];
-}
-
 - (void)postTweetForCurrentUser:(NSString *)status success:(void (^)(AFHTTPRequestOperation * operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
 
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:status,@"status", nil];

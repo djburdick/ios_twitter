@@ -9,6 +9,7 @@
 #import "TimelineVC.h"
 #import "TweetCell.h"
 #import "ComposeVC.h"
+#import "UIIMageView+AFNetworking.h"
 
 @interface TimelineVC ()
 
@@ -80,7 +81,7 @@
     cell.screenNameLabel.text = tweet.screeName;
     cell.nameLabel.text = tweet.name;
     cell.timeAgoLabel.text = tweet.timeAgo;
-    [cell.profileImage setImage:tweet.profileImage];
+    [cell.profileImage setImageWithURL:tweet.profileImageURL];
 
     return cell;
 }
@@ -156,13 +157,6 @@
 - (void)composeTweet {
     ComposeVC *cvc = [[ComposeVC alloc] initWithNibName:@"Compose" bundle:[NSBundle mainBundle]];
     [self.navigationController pushViewController:cvc animated:YES];
-
-    [[TwitterClient instance] currentUserProfileData:^(AFHTTPRequestOperation *operation, id response) {
-      //  NSLog(@"%@", response);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        // Do nothing
-    }];
-
 }
 
 - (void)reload {

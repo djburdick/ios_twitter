@@ -32,6 +32,7 @@ static User *_currentUser;
 + (void)setCurrentUser:(User *)currentUser {
     if (currentUser) {
         NSData *userData = [NSJSONSerialization dataWithJSONObject:currentUser.data options:NSJSONWritingPrettyPrinted error:nil];
+
         [[NSUserDefaults standardUserDefaults] setObject:userData forKey:kCurrentUserKey];
     } else {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:kCurrentUserKey];

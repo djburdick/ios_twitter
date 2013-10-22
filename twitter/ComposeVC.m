@@ -7,9 +7,13 @@
 //
 
 #import "ComposeVC.h"
+#import "UIIMageView+AFNetworking.h"
 
 @interface ComposeVC ()
 @property (nonatomic, weak) IBOutlet UITextView *tweetTextView;
+@property (nonatomic, weak) IBOutlet UILabel *screenName;
+@property (nonatomic, weak) IBOutlet UILabel *name;
+@property (nonatomic, weak) IBOutlet UIImageView *profileImage;
 @end
 
 @implementation ComposeVC
@@ -28,6 +32,11 @@
     [super viewDidLoad];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(postTweet)];
+
+    User *userData = [User currentUser];
+    _screenName.text = [userData.data objectForKey:@"screen_name"];
+    _name.text = [userData.data objectForKey:@"name"];
+    [_profileImage setImageWithURL:[NSURL URLWithString:[userData.data objectForKey:@"profile_image_url"]]];
 }
 
 - (void)didReceiveMemoryWarning

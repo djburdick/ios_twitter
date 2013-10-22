@@ -30,10 +30,8 @@
     return [self dateDiff:self.createdAt];
 }
 
-- (UIImage *)profileImage {
-    NSURL *profileImageURL = [NSURL URLWithString:[self.userData valueOrNilForKeyPath:@"profile_image_url"]];
-    NSData *profileImageData = [NSData dataWithContentsOfURL:profileImageURL];
-    return [UIImage imageWithData:profileImageData];
+- (NSURL *)profileImageURL {
+    return [NSURL URLWithString:[self.userData valueOrNilForKeyPath:@"profile_image_url"]];
 }
 
 // TODO: memoize this?
