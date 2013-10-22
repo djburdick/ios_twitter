@@ -10,6 +10,7 @@
 #import "TweetCell.h"
 #import "ComposeVC.h"
 #import "UIIMageView+AFNetworking.h"
+#import "TweetVC.h"
 
 @interface TimelineVC ()
 
@@ -128,9 +129,12 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
+    TweetCell *cell = (TweetCell *)[self.tableView cellForRowAtIndexPath:indexPath];
 
+    TweetVC *tvc = [[TweetVC alloc] initWithTweetCell:cell];
+
+    [self.navigationController pushViewController:tvc animated:YES];
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120.0;
@@ -155,7 +159,7 @@
 }
 
 - (void)composeTweet {
-    ComposeVC *cvc = [[ComposeVC alloc] initWithNibName:@"Compose" bundle:[NSBundle mainBundle]];
+    ComposeVC *cvc = [[ComposeVC alloc] init];
     [self.navigationController pushViewController:cvc animated:YES];
 }
 
