@@ -22,6 +22,7 @@
 //@property (nonatomic, weak) IBOutlet UIButton *reply;
 
 - (IBAction)onReply:(id)sender;
+- (IBAction)retweet:(id)sender;
 @end
 
 @implementation TweetVC
@@ -59,6 +60,18 @@
     ComposeVC *cvc = [[ComposeVC alloc] init];
     cvc.replyTo = self.tweet.screeName;
     [self.navigationController pushViewController:cvc animated:YES];
+}
+
+- (void)retweet:(id)sender
+{
+    [[TwitterClient instance] retweetATweet:self.tweet.tweetId success:^(AFHTTPRequestOperation *operation, id response) {
+        NSLog(@"%@", response);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        // do nothing
+    }];
+
+    UIButton *retweetButton = sender;
+    retweetButton.enabled = NO;
 }
 
 @end

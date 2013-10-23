@@ -52,12 +52,7 @@ static NSString * const kAccessTokenKey = @"kAccessTokenKey";
     [self getPath:@"1.1/account/verify_credentials.json" parameters:nil success:success failure:failure];
 }
 
-- (void)postTweetForCurrentUser:(NSString *)status success:(void (^)(AFHTTPRequestOperation * operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
 
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:status,@"status", nil];
-
-    [self postPath:@"1.1/statuses/update.json" parameters:params success:success failure:failure];
-}
 
 #pragma mark - Statuses API
 
@@ -71,6 +66,21 @@ static NSString * const kAccessTokenKey = @"kAccessTokenKey";
     }
     [self getPath:@"1.1/statuses/home_timeline.json" parameters:params success:success failure:failure];
 }
+
+- (void)postTweetForCurrentUser:(NSString *)status success:(void (^)(AFHTTPRequestOperation * operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:status,@"status", nil];
+
+    [self postPath:@"1.1/statuses/update.json" parameters:params success:success failure:failure];
+}
+
+- (void)retweetATweet:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation * operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+
+    NSString *postTo = [NSString stringWithFormat:@"1.1/statuses/retweet/%@.json", tweetId];
+
+    [self postPath:postTo parameters:nil success:success failure:failure];
+}
+
 
 #pragma mark - Private methods
 
