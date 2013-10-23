@@ -137,7 +137,13 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 120.0;
+
+    Tweet *tweet = self.tweets[indexPath.row];
+
+    CGSize size = [tweet.text sizeWithFont:[UIFont systemFontOfSize:14]
+                              forWidth:225 lineBreakMode:NSLineBreakByWordWrapping];
+
+    return size.height + 5;
 }
 
 /*
