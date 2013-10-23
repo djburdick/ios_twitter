@@ -23,6 +23,7 @@
 
 - (IBAction)onReply:(id)sender;
 - (IBAction)retweet:(id)sender;
+- (IBAction)favorite:(id)sender;
 @end
 
 @implementation TweetVC
@@ -65,6 +66,18 @@
 - (void)retweet:(id)sender
 {
     [[TwitterClient instance] retweetATweet:self.tweet.tweetId success:^(AFHTTPRequestOperation *operation, id response) {
+        NSLog(@"%@", response);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        // do nothing
+    }];
+
+    UIButton *retweetButton = sender;
+    retweetButton.enabled = NO;
+}
+
+- (void)favorite:(id)sender
+{
+    [[TwitterClient instance] favoriteATweet:self.tweet.tweetId success:^(AFHTTPRequestOperation *operation, id response) {
         NSLog(@"%@", response);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         // do nothing

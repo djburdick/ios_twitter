@@ -81,6 +81,12 @@ static NSString * const kAccessTokenKey = @"kAccessTokenKey";
     [self postPath:postTo parameters:nil success:success failure:failure];
 }
 
+- (void)favoriteATweet:(NSString *)tweetId success:(void (^)(AFHTTPRequestOperation * operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:tweetId,@"id", nil];
+
+    [self postPath:@"1.1/favorites/create.json" parameters:params success:success failure:failure];
+}
 
 #pragma mark - Private methods
 
