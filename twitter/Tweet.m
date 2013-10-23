@@ -34,7 +34,6 @@
     return [NSURL URLWithString:[self.userData valueOrNilForKeyPath:@"profile_image_url"]];
 }
 
-// TODO: memoize this?
 - (NSDictionary *)userData {
     return [self.data valueOrNilForKeyPath:@"user"];
 }
@@ -64,6 +63,9 @@
     ti = ti * -1;
     if(ti < 1) {
     	return @"never";
+    } else if (ti < 60) {
+    	int diff = round(ti);
+    	return [NSString stringWithFormat:@"%ds", diff];
     } else if (ti < 3600) {
     	int diff = round(ti / 60);
     	return [NSString stringWithFormat:@"%dm", diff];

@@ -38,17 +38,11 @@ static int DefaultTweetSize = 140;
     self.tweetTextView.delegate = self;
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(postTweet)];
-
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelTweet)];
 
     [self.tweetTextView setText:DefaultTweetText];
 
-    User *userData = [User currentUser];
-
-    self.screenName.text = [NSString stringWithFormat:@"%@%@", @"@", [userData.data objectForKey:@"screen_name"]];
-
-    self.name.text = [userData.data objectForKey:@"name"];
-    [self.profileImage setImageWithURL:[NSURL URLWithString:[userData.data objectForKey:@"profile_image_url"]]];
+    [self setCurrentUserProfileInfo];
 
     if (self.replyTo) {
         self.tweetTextView.text = self.replyTo;
@@ -89,6 +83,16 @@ static int DefaultTweetSize = 140;
 {
     int tweetTextLength = [self.tweetTextView.text length];
     self.tweetCharacters.text = [NSString stringWithFormat:@"%i", DefaultTweetSize - tweetTextLength];
+}
+
+- (void)setCurrentUserProfileInfo
+{
+    User *userData = [User currentUser];
+
+    self.screenName.text = [NSString stringWithFormat:@"%@%@", @"@", [userData.data objectForKey:@"screen_name"]];
+
+    self.name.text = [userData.data objectForKey:@"name"];
+    [self.profileImage setImageWithURL:[NSURL URLWithString:[userData.data objectForKey:@"profile_image_url"]]];
 }
 
 @end

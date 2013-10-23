@@ -19,8 +19,6 @@
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *profileImage;
 
-//@property (nonatomic, weak) IBOutlet UIButton *reply;
-
 - (IBAction)onReply:(id)sender;
 - (IBAction)retweet:(id)sender;
 - (IBAction)favorite:(id)sender;
@@ -66,7 +64,7 @@
 - (void)retweet:(id)sender
 {
     [[TwitterClient instance] retweetATweet:self.tweet.tweetId success:^(AFHTTPRequestOperation *operation, id response) {
-        NSLog(@"%@", response);
+       // NSLog(@"%@", response);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         // do nothing
     }];
@@ -78,13 +76,13 @@
 - (void)favorite:(id)sender
 {
     [[TwitterClient instance] favoriteATweet:self.tweet.tweetId success:^(AFHTTPRequestOperation *operation, id response) {
-        NSLog(@"%@", response);
+       // NSLog(@"%@", response);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         // do nothing
     }];
 
-    UIButton *retweetButton = sender;
-    retweetButton.enabled = NO;
+    UIButton *favoriteButton = sender;
+    favoriteButton.enabled = NO;
 }
 
 @end
