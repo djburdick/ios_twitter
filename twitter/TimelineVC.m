@@ -140,10 +140,15 @@
 
     Tweet *tweet = self.tweets[indexPath.row];
 
-    CGSize size = [tweet.text sizeWithFont:[UIFont systemFontOfSize:14]
-                              forWidth:225 lineBreakMode:NSLineBreakByWordWrapping];
+    NSDictionary *attributes = @{ NSFontAttributeName : [UIFont systemFontOfSize:14] };
 
-    return size.height + 5;
+    CGRect frame = [tweet.text boundingRectWithSize:CGSizeMake(225, 1000)
+                                            options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                         attributes:attributes
+                                            context:nil];
+
+    return MAX(65.0, frame.size.height + 50.0);
+
 }
 
 /*
