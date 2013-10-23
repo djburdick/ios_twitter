@@ -10,12 +10,14 @@
 #import "UIIMageView+AFNetworking.h"
 
 static NSString *DefaultTweetText = @"What's Happening";
+static int DefaultTweetSize = 140;
 
 @interface ComposeVC ()
 @property (nonatomic, weak) IBOutlet UITextView *tweetTextView;
 @property (nonatomic, weak) IBOutlet UILabel *screenName;
 @property (nonatomic, weak) IBOutlet UILabel *name;
 @property (nonatomic, weak) IBOutlet UIImageView *profileImage;
+@property (nonatomic, weak) IBOutlet UILabel *tweetCharacters;
 @end
 
 @implementation ComposeVC
@@ -81,6 +83,12 @@ static NSString *DefaultTweetText = @"What's Happening";
 
     if ([self.tweetTextView.text isEqualToString:DefaultTweetText])
         self.tweetTextView.text = nil;
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    int tweetTextLength = [self.tweetTextView.text length];
+    self.tweetCharacters.text = [NSString stringWithFormat:@"%i", DefaultTweetSize - tweetTextLength];
 }
 
 @end

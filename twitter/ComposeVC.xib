@@ -10,6 +10,7 @@
                 <outlet property="name" destination="jY6-xf-gWm" id="Lft-el-1V2"/>
                 <outlet property="profileImage" destination="1Da-vd-lTi" id="h7Z-xm-ddR"/>
                 <outlet property="screenName" destination="sfa-6Z-d0D" id="TAI-Xi-5xO"/>
+                <outlet property="tweetCharacters" destination="qeZ-ZG-k8e" id="GeB-56-r6K"/>
                 <outlet property="tweetTextView" destination="wd6-bn-dNd" id="X8U-xt-VH2"/>
                 <outlet property="view" destination="ycY-Ko-6xM" id="XWw-Rv-R7T"/>
             </connections>
@@ -40,6 +41,12 @@
                     <rect key="frame" x="69" y="101" width="231" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="140" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qeZ-ZG-k8e">
+                    <rect key="frame" x="266" y="72" width="29" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
