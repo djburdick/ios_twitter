@@ -26,8 +26,13 @@
     return [self.data valueOrNilForKeyPath:@"created_at"];
 }
 
-- (NSString *)timeAgo {
-    return [self dateDiff:self.createdAt];
+- (NSString *)createdAtPretty {
+    NSDate *convertedDate = [self convertStringToDate:self.createdAt];
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy, hh:mm a"];
+
+    return [dateFormatter stringFromDate:convertedDate];
 }
 
 - (NSURL *)profileImageURL {
@@ -51,12 +56,16 @@
     return tweets;
 }
 
-// TODO move this to an NSDate category
--(NSString *)dateDiff:(NSString *)origDate {
+- (NSDate *)convertStringToDate:(NSString *)origDate
+{
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setFormatterBehavior:NSDateFormatterBehavior10_4];
     [df setDateFormat:@"EEE MMM dd HH:mm:ss Z yyyy"];
-    NSDate *convertedDate = [df dateFromString:origDate];
+    return [df dateFromString:origDate];
+}
+
+- (NSString *)timeAgo {
+    NSDate *convertedDate = [self convertStringToDate:self.createdAt];
 
     NSDate *todayDate = [NSDate date];
     double ti = [convertedDate timeIntervalSinceDate:todayDate];

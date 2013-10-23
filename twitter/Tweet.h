@@ -15,6 +15,7 @@
 @property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, strong, readonly) NSString *timeAgo;
 @property (nonatomic, strong, readonly) NSString *createdAt;
+@property (nonatomic, strong, readonly) NSString *createdAtPretty;
 @property (nonatomic, strong, readonly) NSURL *profileImageURL;
 @property (nonatomic, strong, readonly) NSString *tweetId;
 

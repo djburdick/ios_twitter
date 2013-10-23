@@ -44,7 +44,7 @@
     self.tweetLabel.text = self.tweet.text;
     self.nameLabel.text = self.tweet.name;
     self.screenNameLabel.text = self.tweet.screeName;
-    self.timeLabel.text = self.tweet.createdAt;
+    self.timeLabel.text = self.tweet.createdAtPretty;
     [self.profileImage setImageWithURL:self.tweet.profileImageURL];
 }
 

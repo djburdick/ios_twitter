@@ -9,7 +9,7 @@
 #import "ComposeVC.h"
 #import "UIIMageView+AFNetworking.h"
 
-static NSString *DefaultTweetText = @"What's Happening";
+static NSString *DefaultTweetText = @"What's Happening?";
 static int DefaultTweetSize = 140;
 
 @interface ComposeVC ()
