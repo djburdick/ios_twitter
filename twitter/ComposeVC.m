@@ -9,6 +9,8 @@
 #import "ComposeVC.h"
 #import "UIIMageView+AFNetworking.h"
 
+static NSString *DefaultTweetText = @"What's Happening";
+
 @interface ComposeVC ()
 @property (nonatomic, weak) IBOutlet UITextView *tweetTextView;
 @property (nonatomic, weak) IBOutlet UILabel *screenName;
@@ -31,9 +33,13 @@
 {
     [super viewDidLoad];
 
+    self.tweetTextView.delegate = self;
+
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Tweet" style:UIBarButtonItemStylePlain target:self action:@selector(postTweet)];
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelTweet)];
+
+    [self.tweetTextView setText:DefaultTweetText];
 
     User *userData = [User currentUser];
     _screenName.text = [userData.data objectForKey:@"screen_name"];
@@ -66,6 +72,13 @@
 - (void)cancelTweet
 {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+
+    if ([self.tweetTextView.text isEqualToString:DefaultTweetText])
+        self.tweetTextView.text = nil;
 }
 
 @end
