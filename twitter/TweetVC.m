@@ -8,6 +8,7 @@
 
 #import "TweetVC.h"
 #import "UIIMageView+AFNetworking.h"
+#import "ComposeVC.h"
 
 @interface TweetVC ()
 @property (nonatomic, strong) Tweet *tweet;
@@ -17,6 +18,10 @@
 @property (nonatomic, weak) IBOutlet UILabel *screenNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *profileImage;
+
+//@property (nonatomic, weak) IBOutlet UIButton *reply;
+
+- (IBAction)onReply:(id)sender;
 @end
 
 @implementation TweetVC
@@ -47,6 +52,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)onReply:(id)sender
+{
+    ComposeVC *cvc = [[ComposeVC alloc] init];
+    cvc.replyTo = self.tweet.screeName;
+    [self.navigationController pushViewController:cvc animated:YES];
 }
 
 @end

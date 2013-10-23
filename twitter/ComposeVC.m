@@ -39,6 +39,11 @@
     _screenName.text = [userData.data objectForKey:@"screen_name"];
     _name.text = [userData.data objectForKey:@"name"];
     [_profileImage setImageWithURL:[NSURL URLWithString:[userData.data objectForKey:@"profile_image_url"]]];
+
+    if (self.replyTo) {
+        self.tweetTextView.text = self.replyTo;
+    }
+
 }
 
 - (void)didReceiveMemoryWarning

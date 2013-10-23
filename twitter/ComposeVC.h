@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ComposeVC : UIViewController
-
+@property (nonatomic, strong) NSString *replyTo;
 @end
