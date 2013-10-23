@@ -42,9 +42,11 @@ static NSString *DefaultTweetText = @"What's Happening";
     [self.tweetTextView setText:DefaultTweetText];
 
     User *userData = [User currentUser];
-    _screenName.text = [userData.data objectForKey:@"screen_name"];
-    _name.text = [userData.data objectForKey:@"name"];
-    [_profileImage setImageWithURL:[NSURL URLWithString:[userData.data objectForKey:@"profile_image_url"]]];
+
+    self.screenName.text = [NSString stringWithFormat:@"%@%@", @"@", [userData.data objectForKey:@"screen_name"]];
+
+    self.name.text = [userData.data objectForKey:@"name"];
+    [self.profileImage setImageWithURL:[NSURL URLWithString:[userData.data objectForKey:@"profile_image_url"]]];
 
     if (self.replyTo) {
         self.tweetTextView.text = self.replyTo;
