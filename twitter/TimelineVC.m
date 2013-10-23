@@ -116,9 +116,9 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TweetCell *cell = (TweetCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    Tweet *tweet = self.tweets[indexPath.row];
 
-    TweetVC *tvc = [[TweetVC alloc] initWithTweetCell:cell];
+    TweetVC *tvc = [[TweetVC alloc] initWithTweet:tweet];
 
     [self.navigationController pushViewController:tvc animated:YES];
 }

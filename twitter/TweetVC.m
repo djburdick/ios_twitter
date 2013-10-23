@@ -7,9 +7,10 @@
 //
 
 #import "TweetVC.h"
+#import "UIIMageView+AFNetworking.h"
 
 @interface TweetVC ()
-@property (nonatomic, strong) TweetCell *cell;
+@property (nonatomic, strong) Tweet *tweet;
 
 @property (nonatomic, weak) IBOutlet UILabel *tweetLabel;
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
@@ -20,13 +21,13 @@
 
 @implementation TweetVC
 
-- (id)initWithTweetCell:(TweetCell *)cell
+- (id)initWithTweet:(Tweet *)tweet
 {
     self = [super init];
     
     if (self) {
         self.title = @"Tweet";
-        self.cell = cell;
+        self.tweet = tweet;
     }
     return self;
 }
@@ -34,11 +35,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tweetLabel.text = self.cell.tweetLabel.text;
-    self.nameLabel.text = self.cell.nameLabel.text;
-    self.screenNameLabel.text = self.cell.screenNameLabel.text;
-    self.timeLabel.text = self.cell.timeLabel.text;
-    self.profileImage.image = self.cell.profileImage.image;
+    
+    self.tweetLabel.text = self.tweet.text;
+    self.nameLabel.text = self.tweet.name;
+    self.screenNameLabel.text = self.tweet.screeName;
+    self.timeLabel.text = self.tweet.createdAt;
+    [self.profileImage setImageWithURL:self.tweet.profileImageURL];
 }
 
 - (void)didReceiveMemoryWarning

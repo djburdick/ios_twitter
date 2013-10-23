@@ -10,6 +10,6 @@
 #import "TweetCell.h"
 
 @interface TweetVC : UIViewController
-- (id)initWithTweetCell:(TweetCell *)cell;
+- (id)initWithTweet:(Tweet *)tweet;
 
 @end
