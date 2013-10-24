@@ -8,35 +8,71 @@
 
 #import "Tweet.h"
 
+@interface Tweet()
+@property (nonatomic, strong, readwrite) NSString *text;
+@property (nonatomic, strong, readwrite) NSString *screeName;
+@property (nonatomic, strong, readwrite) NSString *name;
+@property (nonatomic, strong, readwrite) NSString *timeAgo;
+@property (nonatomic, strong, readwrite) NSString *createdAt;
+@property (nonatomic, strong, readwrite) NSString *createdAtPretty;
+@property (nonatomic, strong, readwrite) NSURL *profileImageURL;
+@property (nonatomic, strong, readwrite) NSString *tweetId;
+@end
+
 @implementation Tweet
 
 - (NSString *)text {
-    return [self.data valueOrNilForKeyPath:@"text"];
+    if (_text) {
+        return _text;
+    } else {
+        return [self.data valueOrNilForKeyPath:@"text"];
+    }
 }
 
 - (NSString *)screeName {
-    return [@"@" stringByAppendingString:[self.userData valueOrNilForKeyPath:@"screen_name"]];
+    if (_screeName) {
+        return _screeName;
+    } else {
+        return [@"@" stringByAppendingString:[self.userData valueOrNilForKeyPath:@"screen_name"]];
+    }
 }
 
 - (NSString *)name {
-    return [self.userData valueOrNilForKeyPath:@"name"];
+    if (_name) {
+        return _name;
+    } else {
+        return [self.userData valueOrNilForKeyPath:@"name"];
+    }
 }
 
 - (NSString *)createdAt {
-    return [self.data valueOrNilForKeyPath:@"created_at"];
+    if (_createdAt) {
+        return _createdAt;
+    } else {
+        return [self.data valueOrNilForKeyPath:@"created_at"];
+    }
 }
 
 - (NSString *)createdAtPretty {
-    NSDate *convertedDate = [self convertStringToDate:self.createdAt];
 
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"MM/dd/yyyy, hh:mm a"];
+    if (_createdAtPretty) {
+        return _createdAtPretty;
+    } else {
+        NSDate *convertedDate = [self convertStringToDate:self.createdAt];
 
-    return [dateFormatter stringFromDate:convertedDate];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy, hh:mm a"];
+
+        return [dateFormatter stringFromDate:convertedDate];
+    }
 }
 
 - (NSURL *)profileImageURL {
-    return [NSURL URLWithString:[self.userData valueOrNilForKeyPath:@"profile_image_url"]];
+    if (_profileImageURL) {
+        return _profileImageURL;
+    } else {
+        return [NSURL URLWithString:[self.userData valueOrNilForKeyPath:@"profile_image_url"]];
+    }
 }
 
 - (NSDictionary *)userData {
@@ -45,7 +81,11 @@
 
 - (NSString *)tweetId
 {
-    return [self.data valueOrNilForKeyPath:@"id"];
+    if (_tweetId) {
+        return _tweetId;
+    } else {
+        return [self.data valueOrNilForKeyPath:@"id"];
+    }
 }
 
 + (NSMutableArray *)tweetsWithArray:(NSArray *)array {
@@ -65,27 +105,34 @@
 }
 
 - (NSString *)timeAgo {
-    NSDate *convertedDate = [self convertStringToDate:self.createdAt];
 
-    NSDate *todayDate = [NSDate date];
-    double ti = [convertedDate timeIntervalSinceDate:todayDate];
-    ti = ti * -1;
-    if(ti < 1) {
-    	return @"never";
-    } else if (ti < 60) {
-    	int diff = round(ti);
-    	return [NSString stringWithFormat:@"%ds", diff];
-    } else if (ti < 3600) {
-    	int diff = round(ti / 60);
-    	return [NSString stringWithFormat:@"%dm", diff];
-    } else if (ti < 86400) {
-    	int diff = round(ti / 60 / 60);
-    	return[NSString stringWithFormat:@"%dh", diff];
-    } else if (ti < 2629743) {
-    	int diff = round(ti / 60 / 60 / 24);
-    	return[NSString stringWithFormat:@"%dd", diff];
+    if (_timeAgo) {
+        return _timeAgo;
     } else {
-    	return @"never";
+
+        NSDate *convertedDate = [self convertStringToDate:self.createdAt];
+
+        NSDate *todayDate = [NSDate date];
+        double ti = [convertedDate timeIntervalSinceDate:todayDate];
+        ti = ti * -1;
+        if(ti < 1) {
+            return @"never";
+        } else if (ti < 60) {
+            int diff = round(ti);
+            return [NSString stringWithFormat:@"%ds", diff];
+        } else if (ti < 3600) {
+            int diff = round(ti / 60);
+            return [NSString stringWithFormat:@"%dm", diff];
+        } else if (ti < 86400) {
+            int diff = round(ti / 60 / 60);
+            return[NSString stringWithFormat:@"%dh", diff];
+        } else if (ti < 2629743) {
+            int diff = round(ti / 60 / 60 / 24);
+            return[NSString stringWithFormat:@"%dd", diff];
+        } else {
+            return @"never";
+        }
+
     }
 }
 
