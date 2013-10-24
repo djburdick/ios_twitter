@@ -74,6 +74,10 @@
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell" forIndexPath:indexPath];
     Tweet *tweet = self.tweets[indexPath.row];
 
+    cell.tweetLabel.editable = NO;
+    cell.tweetLabel.userInteractionEnabled = NO;
+    cell.tweetLabel.dataDetectorTypes = UIDataDetectorTypeLink;
+
     cell.tweetLabel.text = tweet.text;
     cell.screenNameLabel.text = tweet.screeName;
     cell.nameLabel.text = tweet.name;
