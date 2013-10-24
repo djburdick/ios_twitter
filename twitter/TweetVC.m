@@ -13,7 +13,7 @@
 @interface TweetVC ()
 @property (nonatomic, strong) Tweet *tweet;
 
-@property (nonatomic, weak) IBOutlet UILabel *tweetLabel;
+@property (nonatomic, weak) IBOutlet UITextView *tweetTextView;
 @property (nonatomic, weak) IBOutlet UILabel *nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *screenNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *timeLabel;
@@ -40,8 +40,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.tweetLabel.text = self.tweet.text;
+
+    self.tweetTextView.text = self.tweet.text;
+    self.tweetTextView.editable = NO;
+    self.tweetTextView.dataDetectorTypes = UIDataDetectorTypeLink;
+
     self.nameLabel.text = self.tweet.name;
     self.screenNameLabel.text = self.tweet.screeName;
     self.timeLabel.text = self.tweet.createdAtPretty;
